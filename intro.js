@@ -1,9 +1,9 @@
 /*
-CaSh 
-Shannon Lau and Carol Pan
-SoftDev1 pd7
-K16 -- Sequential Progression
-2017-12-11
+  CaSh 
+  Shannon Lau and Carol Pan
+  SoftDev1 pd7
+  K16 -- Sequential Progression
+  2017-12-11
 */
 
 var count = 8; // list item number
@@ -14,7 +14,7 @@ var buttonCallBack = function(e){
     el.innerHTML = 'item ' + count;
     var list = document.getElementById('thelist');
     list.appendChild(el);
-    mouseCalls();
+    addListeners(el);
     count++;
 }
 
@@ -24,7 +24,7 @@ b.addEventListener('click', buttonCallBack);
 
 // when mouseover list item, change heading to item name
 var mOverCallBack = function(e){
-    var heading = document.getElementById('h');
+    var heading = document.getElementById('h'); 
     heading.innerHTML = this.innerHTML;
 };
 
@@ -39,14 +39,14 @@ var clickCallBack = function(e){
     this.remove();
 }
 
-// add mouseover, mouseout, and click events to list items
-var mouseCalls = function(){
-    var li = document.getElementsByTagName('li');
-    for (i = 0; i < li.length; i++){
-	li[i].addEventListener('mouseover', mOverCallBack);
-	li[i].addEventListener('mouseout', mOutCallBack);
-	li[i].addEventListener('click', clickCallBack);
-    };
-};
+var addListeners = function(item){
+    item.addEventListener('mouseover', mOverCallBack);
+    item.addEventListener('mouseout', mOutCallBack);
+    item.addEventListener('click', clickCallBack);
+}
 
-mouseCalls();
+// add mouseover, mouseout, and click events to list items
+var li = document.getElementsByTagName('li');
+for (i = 0; i < li.length; i++){
+    addListeners(li[i]);
+};
