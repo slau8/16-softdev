@@ -51,6 +51,7 @@ for (i = 0; i < li.length; i++){
     addListeners(li[i]);
 };
 
+//----------------fibonacci-----------------
 //creating procures the next element in the fib sequence
 var fibCounter = 1;
 var fibList = document.createElement("ol");
@@ -69,14 +70,18 @@ console.log(fibButton);
 var fibonacci = function(n){
     if (n == 0)
 	return 0;
-    else if (n == 1)
+    else if (n == 1 || n==2)
 	return 1;
-    else
-	return fibonacci(n-1) + fibonacci(n-2);
+    else {
+	fibNums = document.getElementsByClassName("fib");
+	len = fibNums.length;
+	return Number(fibNums[len-1].innerHTML) + Number(fibNums[len-2].innerHTML);
+    };
 };
 
 var fibButtonCallback = function(e){
     var nextFib = document.createElement("li");
+    nextFib.setAttribute("class", "fib");
     nextFib.innerHTML = fibonacci(fibCounter);
     fibList.appendChild(nextFib);
     fibCounter++;
@@ -85,3 +90,4 @@ var fibButtonCallback = function(e){
 //add click functionality
 fibButton.addEventListener("click", fibButtonCallback);
 
+//triangular sequence
