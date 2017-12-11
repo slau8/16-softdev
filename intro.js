@@ -6,6 +6,10 @@
   2017-12-11
 */
 
+// body element
+var body = document.getElementsByTagName("body")[0];
+console.log(body);
+
 var count = 8; // list item number
 
 // when button clicked, add new list item
@@ -52,21 +56,17 @@ for (i = 0; i < li.length; i++){
 };
 
 //----------------fibonacci-----------------
-//procures the next element in the fib sequence
+// procures the next element in the fib sequence
 var fibCounter = 1;
 var fibList = document.createElement("ol");
 var fibButton = document.createElement("button");
 fibButton.innerHTML = "Generate Next Fib";
-var body = document.getElementsByTagName("body")[0];
-console.log(body);
 
-//adding elements to the body
+// adding elements to the body
 body.appendChild(fibList);
-console.log(fibList);
 body.appendChild(fibButton);
-console.log(fibButton);
 
-//functions for fibonacci component
+// functions for fibonacci component
 var fibonacci = function(n){
     if (n == 0)
 	return 0;
@@ -87,32 +87,30 @@ var fibButtonCallback = function(e){
     fibCounter++;
 };
 
-//add click functionality
+// add click functionality
 fibButton.addEventListener("click", fibButtonCallback);
 
-//triangular sequence
-//procures the next element in the triangular sequence
+//----------------triangular sequence-----------------
+// procures the next element in the triangular sequence
 var triCounter = 1;
 var triList = document.createElement("ol");
 var triButton = document.createElement("button");
-fibButton.innerHTML = "Generate Next Triangle";
+triButton.innerHTML = "Generate Next Triangle";
 
-
-//adding elements to the body
+// adding elements to the body
 body.appendChild(triList);
-console.log(triList);
 body.appendChild(triButton);
-console.log(triButton);
 
-//functions for triangular component
+// functions for triangular component
 var triangular = function(n){
     if (n == 1)
 	return 1;
     else {
-	triNums = document.getElementsByClassName("fib");
+	triNums = document.getElementsByClassName("tri");
 	len = triNums.length;
-	return Number(triNums[len-1].innerHTML) + counter;
+	return Number(triNums[len-1].innerHTML) + triCounter;
     };
+    triCounter++
 };
 
 var triButtonCallback = function(e){
@@ -123,5 +121,5 @@ var triButtonCallback = function(e){
     triCounter++;
 };
 
-//add click functionality
+// add click functionality
 triButton.addEventListener("click", triButtonCallback);
