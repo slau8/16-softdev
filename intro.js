@@ -16,7 +16,7 @@ var buttonCallBack = function(e){
     list.appendChild(el);
     addListeners(el);
     count++;
-}
+};
 
 // add click event to button
 var b = document.getElementById('b');
@@ -37,16 +37,51 @@ var mOutCallBack = function(e){
 // when list item clicked, remove list item
 var clickCallBack = function(e){
     this.remove();
-}
+};
 
 var addListeners = function(item){
     item.addEventListener('mouseover', mOverCallBack);
     item.addEventListener('mouseout', mOutCallBack);
     item.addEventListener('click', clickCallBack);
-}
+};
 
 // add mouseover, mouseout, and click events to list items
 var li = document.getElementsByTagName('li');
 for (i = 0; i < li.length; i++){
     addListeners(li[i]);
 };
+
+//creating procures the next element in the fib sequence
+var fibCounter = 1;
+var fibList = document.createElement("ol");
+var fibButton = document.createElement("button");
+fibButton.innerHTML = "Generate Next Fib";
+var body = document.getElementsByTagName("body")[0];
+console.log(body);
+
+//adding elements to the body
+body.appendChild(fibList);
+console.log(fibList);
+body.appendChild(fibButton);
+console.log(fibButton);
+
+//functions for fibonacci component
+var fibonacci = function(n){
+    if (n == 0)
+	return 0;
+    else if (n == 1)
+	return 1;
+    else
+	return fibonacci(n-1) + fibonacci(n-2);
+};
+
+var fibButtonCallback = function(e){
+    var nextFib = document.createElement("li");
+    nextFib.innerHTML = fibonacci(fibCounter);
+    fibList.appendChild(nextFib);
+    fibCounter++;
+};
+
+//add click functionality
+fibButton.addEventListener("click", fibButtonCallback);
+
