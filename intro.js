@@ -52,7 +52,7 @@ for (i = 0; i < li.length; i++){
 };
 
 //----------------fibonacci-----------------
-//creating procures the next element in the fib sequence
+//procures the next element in the fib sequence
 var fibCounter = 1;
 var fibList = document.createElement("ol");
 var fibButton = document.createElement("button");
@@ -91,3 +91,37 @@ var fibButtonCallback = function(e){
 fibButton.addEventListener("click", fibButtonCallback);
 
 //triangular sequence
+//procures the next element in the triangular sequence
+var triCounter = 1;
+var triList = document.createElement("ol");
+var triButton = document.createElement("button");
+fibButton.innerHTML = "Generate Next Triangle";
+
+
+//adding elements to the body
+body.appendChild(triList);
+console.log(triList);
+body.appendChild(triButton);
+console.log(triButton);
+
+//functions for triangular component
+var triangular = function(n){
+    if (n == 1)
+	return 1;
+    else {
+	triNums = document.getElementsByClassName("fib");
+	len = triNums.length;
+	return Number(triNums[len-1].innerHTML) + counter;
+    };
+};
+
+var triButtonCallback = function(e){
+    var nextTri = document.createElement("li");
+    nextTri.setAttribute("class", "tri");
+    nextTri.innerHTML = triangular(triCounter);
+    triList.appendChild(nextTri);
+    triCounter++;
+};
+
+//add click functionality
+triButton.addEventListener("click", triButtonCallback);
